@@ -259,10 +259,8 @@ select {
 .contents__inner{
   margin: 0 auto;
   max-width: 100%;
-  width: 960px;
-	@include sp(){
-		padding: 0 20px;
-	}
+  width: 1000px;
+	padding: 0 20px;
 }
 
 .wrapper{

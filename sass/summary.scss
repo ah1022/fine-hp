@@ -9,19 +9,62 @@ main{
   background-image: url(../images/summary/summary_bg.svg);
 }
 
+.faq__bg-color{
+  background: $MainColor;
+}
+
+.faq__bg-image{
+  background-image: url(../images/summary/summaryfaq_bg.svg);
+  background-repeat: repeat;
+  background-size: contain;
+}
+
 // ファーストビュー
 .fv{
   padding: 50px;
   background: $MainColor;
   color: #FFF;
   text-align: center;
-  &__title {
+  &__title-en {
+    font-size: $fz-xl;
+    font-style: italic; 
+    position: relative;
+    &::after{
+      background: #fff;
+      bottom: 6px;
+      content: '';
+      display: inline-block;
+      height: 2px;
+      left: 50%;
+      position: absolute;
+      width: 30px;
+      transform: translateX(-50%);
+      }
+  }
+  &__title-ja {
     font-size: $fz-x;
+  }
+}
+
+// エコシステムマップ
+.ecosystems-map{
+  text-align: center;
+  &__title{
+    padding: 50px;
+    font-size: $fz-x;
+    font-weight: $fw-bold;
+    @include sp() {
+      padding: 20px;
+      font-size: $fz-m;
+    }
   }
 }
 
 // カテゴリから選ぶ
 .category{
+  &.bg-white{
+    background: #fff;
+  }
   &__inner{
     margin: 0 auto;
     max-width: 100%;
@@ -44,7 +87,7 @@ main{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 0 20px
+    padding: 30px 20px
   } 
   &__item{
     width: calc((100% / 4) - (20px * 2 / 3));
@@ -75,14 +118,14 @@ main{
 }
 
 // ブログ一覧
-.blogsummary{
-  padding-top: 80px;
-  padding-bottom: 80px;
-  @include sp(){
-    padding-top: 60px;
-    padding-bottom: 40px;
+.summary{
+  &:nth-of-type(2){
+    background: $SubColor;
   }
-
+  padding-top: 50px;
+  @include sp(){
+    padding-top: 50px;
+  }
 
   &__title{
     margin-bottom: 60px;
@@ -100,18 +143,22 @@ main{
       @include sp(){
         font-size: $fz-m;
       }
+      &.italic{
+        font-style: italic;
+      }
+      &.white{
+        color: #fff;
+      }
     }  
     &-image{
       bottom: -18px;
       position: absolute;
       left: 50%;
-      width: 100%;
       transform: translateX(-50%);
     }    
   }
 
   &__contents{
-    margin-bottom: 40px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -121,12 +168,28 @@ main{
     display: block;
     background: #fff;
     &-wrapper{
+      margin-bottom: 40px;
+      height: auto;
+    }
+    &-wrapper.blog{
       width: calc((100% / 2) - 20px);
       margin-bottom: 40px;
       height: auto;
       border: 1px solid $MainColor;
       @include sp(){
         width: 100%;
+      }
+    }
+    &-wrapper.youtube{
+      width: calc((100% / 3) - 20px);
+      margin-bottom: 20px;
+      height: auto;
+      @include sp(){
+        width: 100%;
+      }
+      iframe{
+        width: 100%;
+        height: auto;
       }
     }
     img{
