@@ -119,9 +119,6 @@ main{
 
 // ブログ一覧
 .summary{
-  &:nth-of-type(2){
-    background: $SubColor;
-  }
   padding-top: 50px;
   @include sp(){
     padding-top: 50px;

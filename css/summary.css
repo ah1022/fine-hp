@@ -488,10 +488,6 @@ main {
 	padding-top: 50px;
 }
 
-.summary:nth-of-type(2) {
-	background: #F8F8F8;
-}
-
 .summary__title {
 	display: inline-block;
 	margin-bottom: 60px;
