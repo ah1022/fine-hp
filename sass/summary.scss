@@ -117,6 +117,15 @@ main{
   }
 }
 
+// youtube一覧の交互背景
+.youtube-alternate-bg:nth-of-type(even){
+  background: $SubColor;
+}
+//stakingの交互背景
+.staking-alternate-bg:nth-of-type(odd){
+  background: $SubColor;
+}
+
 // ブログ一覧
 .summary{
   padding-top: 50px;
@@ -192,6 +201,21 @@ main{
     img{
       width: 100%;
     }
+    &-wrapper.staking{
+      width: calc((100% / 4) - 10px);
+      margin-bottom: 20px;
+      height: auto;
+      @include sp(){
+        width: 100%;
+      }
+      iframe{
+        width: 100%;
+        height: auto;
+      }
+    }
+    img{
+      width: 100%;
+    }
   }
 
   &__texts{
@@ -210,3 +234,73 @@ main{
   }
 }
 
+.summary:not(:first-of-type){
+  padding-bottom: 50px;
+}
+
+// FAQ
+.summary__qabox:not(:last-of-type){
+  margin-bottom: 20px;
+}
+.summary__qabox-contents{
+  display: flex;
+  align-items: center;
+  border: 2px solid #fff;
+  font-size: $fz-m;
+  &.question{
+    color:#fff;
+    font-weight: $fw-bold;
+    background: $MainColor;
+    padding: 10px;
+  }
+  &.answer{
+    color:$MainColor;
+    background: #fff;
+    padding: 10px;
+  }
+  .summary__qabox-icon{
+    display: flex;
+    margin-right: 10px;
+  }
+}
+
+// プール基本情報
+.poolinfo__box{
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  .poolinfo__box-text{
+    margin-left: 20px;
+    font-weight: $fw-bold;
+    li{
+      padding: 10px;
+      &:not(:last-of-type){
+        border-bottom: 1px solid #DFDFDF;
+      }
+    }
+    dt{
+      background: #DFDFDF;
+      padding: 5px;
+      display: inline;
+    }
+    dd{
+      padding: 5px;
+      width: auto;
+    }
+    
+  }
+}
+
+.staking-flow{
+  position: relative;
+  .staking_button{
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.footer{
+  background: $MainColor;
+  color:#fff;
+}

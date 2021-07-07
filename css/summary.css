@@ -484,6 +484,14 @@ main {
 	padding: 10%;
 }
 
+.youtube-alternate-bg:nth-of-type(even) {
+	background: #F8F8F8;
+}
+
+.staking-alternate-bg:nth-of-type(odd) {
+	background: #F8F8F8;
+}
+
 .summary {
 	padding-top: 50px;
 }
@@ -557,6 +565,21 @@ main {
 	width: 100%;
 }
 
+.summary__item-wrapper.staking {
+	height: auto;
+	margin-bottom: 20px;
+	width: calc((100% / 4) - 10px);
+}
+
+.summary__item-wrapper.staking iframe {
+	height: auto;
+	width: 100%;
+}
+
+.summary__item img {
+	width: 100%;
+}
+
 .summary__texts {
 	padding: 20px;
 }
@@ -573,6 +596,86 @@ main {
 .summary__texts-third {
 	border-top: 1px solid #73777A;
 	padding-top: 20px;
+}
+
+.summary:not(:first-of-type) {
+	padding-bottom: 50px;
+}
+
+.summary__qabox:not(:last-of-type) {
+	margin-bottom: 20px;
+}
+
+.summary__qabox-contents {
+	align-items: center;
+	border: 2px solid #fff;
+	display: flex;
+	font-size: 18px;
+}
+
+.summary__qabox-contents.question {
+	background: #002C59;
+	color: #fff;
+	font-weight: 600;
+	padding: 10px;
+}
+
+.summary__qabox-contents.answer {
+	background: #fff;
+	color: #002C59;
+	padding: 10px;
+}
+
+.summary__qabox-contents .summary__qabox-icon {
+	display: flex;
+	margin-right: 10px;
+}
+
+.poolinfo__box {
+	align-items: center;
+	display: flex;
+	padding: 10px;
+}
+
+.poolinfo__box .poolinfo__box-text {
+	font-weight: 600;
+	margin-left: 20px;
+}
+
+.poolinfo__box .poolinfo__box-text li {
+	padding: 10px;
+}
+
+.poolinfo__box .poolinfo__box-text li:not(:last-of-type) {
+	border-bottom: 1px solid #DFDFDF;
+}
+
+.poolinfo__box .poolinfo__box-text dt {
+	background: #DFDFDF;
+	display: inline;
+	padding: 5px;
+}
+
+.poolinfo__box .poolinfo__box-text dd {
+	padding: 5px;
+	width: auto;
+}
+
+.staking-flow {
+	position: relative;
+}
+
+.staking-flow .staking_button {
+	-webkit-transform: translateX(-50%);
+	bottom: 30px;
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%);
+}
+
+.footer {
+	background: #002C59;
+	color: #fff;
 }
 
 @media (max-width: 768px) {
@@ -634,6 +737,10 @@ main {
 }
 
 .summary__item-wrapper.youtube {
+	width: 100%;
+}
+
+.summary__item-wrapper.staking {
 	width: 100%;
 }
 
