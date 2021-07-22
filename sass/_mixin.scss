@@ -1,5 +1,10 @@
 // ミックスインの定義
 
+@mixin pc {
+    @media (min-width: 993px) {
+        @content;
+    }
+ }
 
 @mixin sp {
     @media (max-width: 768px) {

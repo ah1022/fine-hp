@@ -286,7 +286,7 @@ select:focus {
 .contents__inner {
 	margin: 0 auto;
 	max-width: 100%;
-	padding: 0 20px;
+	padding: 0 10px;
 	width: 1000px;
 }
 
@@ -307,7 +307,7 @@ select:focus {
 */
 
 /*
-    header
+    header end
 */
 
 .header {
@@ -360,17 +360,12 @@ select:focus {
 	display: flex;
 	height: 148px;
 	justify-content: center;
+	position: fixed;
 	position: absolute;
 	right: 43px;
 	top: 260px;
 	width: 148px;
-	position: fixed;
-  z-index: 5;
-}
-
-.header .common__scrollbutton:hover{
-	background: #d36803;
-	transition: all .3s;
+	z-index: 5;
 }
 
 .header .common__scrollbutton-text {
@@ -388,19 +383,12 @@ select:focus {
 	transform: translateX(-50%);
 }
 
-/*
-    header end
-*/
-
-.common__scrollbutton {
-	position: fixed;
-	z-index: 5;
-}
-
 .section__title-wrapper {
 	margin: auto;
 	max-width: 960px;
+	position: relative;
 	text-align: center;
+	z-index: 1;
 }
 
 .section__title-en {
@@ -417,7 +405,7 @@ select:focus {
 .section__title-en::after {
 	-webkit-transform: translateX(-50%);
 	background: #fff;
-	bottom: 6px;
+	bottom: 0px;
 	content: '';
 	display: inline-block;
 	height: 2px;
@@ -427,6 +415,10 @@ select:focus {
 	width: 30px;
 }
 
+.section__title-en.linerline::after {
+	background: -webkit-linear-gradient(270deg, #002347, #1D64AE, #007EFF);
+}
+
 .section__title-ja {
 	-webkit-background-clip: text !important;
 	background: -webkit-linear-gradient(270deg, #002347, #1D64AE, #007EFF);
@@ -434,6 +426,7 @@ select:focus {
 	color: #002347;
 	color: transparent;
 	font-size: 26px;
+	padding-top: 15px;
 }
 
 .colorbg-wrapper {
@@ -527,12 +520,8 @@ select:focus {
 }
 
 .topbanner__item {
-	align-items: center;
-	background: url("../images/summary/banner_wide.svg") center/contain no-repeat;
-	color: #fff;
-	display: flex;
-	height: 140px;
-	justify-content: center;
+	display: block;
+	position: relative;
 }
 
 .topbanner__item-wrapper {
@@ -544,6 +533,15 @@ select:focus {
 	height: auto;
 	margin-bottom: 50px;
 	width: calc((100% / 4) - 20px);
+}
+
+.topbanner__item-text {
+	-webkit-transform: translate(-50%, -50%);
+	color: #fff;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .topbanner__item img {
@@ -609,14 +607,6 @@ select:focus {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-}
-
-.toppicup__contents.topecosystems-catalist {
-	justify-content: center;
-}
-
-.toppicup__contents.aboutus {
-	justify-content: center;
 }
 
 .toppicup__item {
@@ -710,6 +700,14 @@ select:focus {
 .operatingsystem-icon {
 	margin: 40px 0;
 	text-align: center;
+}
+
+.operatingsystem-sp-flex.revers {
+	flex-direction: row-reverse;
+}
+
+.operatingsystem-bottomtext {
+	color: #73777A;
 }
 
 .topinfomation {
@@ -931,15 +929,21 @@ main {
 	position: relative;
 }
 
+.summary__contents.topecosystems-catalist {
+	justify-content: center;
+	text-align: center;
+}
+
+.summary__contents.reverse {
+	flex-direction: row-reverse;
+}
+
 .summary .aboutus_textarea {
 	position: relative;
 }
 
-.summary .abotus-logo {
-	bottom: 0;
-	position: absolute;
-	right: 0;
-	width: 100px;
+.summary .aboutus_text {
+	padding: 10px;
 }
 
 .summary__item {
@@ -1443,6 +1447,17 @@ main {
 	margin-bottom: 50px;
 }
 
+@media (min-width: 993px) {
+
+.summary .abotus-logo {
+	bottom: 0;
+	position: absolute;
+	right: 0;
+	width: 100px;
+}
+
+}
+
 @media (max-width: 992px) {
 
 .reports__mainarea {
@@ -1455,8 +1470,10 @@ main {
 
 .header .common__scrollbutton {
 	height: 70px;
+	position: fixed;
 	right: 20px;
 	width: 70px;
+	z-index: 5;
 }
 
 .header .common__scrollbutton-text {
@@ -1469,8 +1486,12 @@ main {
 	display: none;
 }
 
+.section__title-en {
+	font-size: 26px;
+}
+
 .topbanner {
-	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 .topbanner__title {
@@ -1481,8 +1502,13 @@ main {
 	font-size: 18px;
 }
 
+.topbanner__contents {
+	justify-content: space-around;
+}
+
 .topbanner__item-wrapper {
-	width: 100%;
+	margin-bottom: 0px;
+	width: calc(50% - 10px);
 }
 
 .toppicup {
@@ -1499,6 +1525,29 @@ main {
 
 .toppicup__item-wrapper {
 	width: 100%;
+}
+
+.topnews .news_bgshape {
+	width: 70%;
+}
+
+.twitter-timeline-wrapper {
+	padding: 0 10px;
+}
+
+.operatingsystem-icon {
+	margin: 10px;
+}
+
+.operatingsystem-sp-flex {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	margin: 30px 0;
+}
+
+.operatingsystem-bottomtext {
+	max-width: 150px;
 }
 
 .ecosystems-map__title {
@@ -1537,6 +1586,10 @@ main {
 	font-size: 18px;
 }
 
+.summary .abotus-logo {
+	width: 50px;
+}
+
 .summary__item-wrapper.blog {
 	width: 100%;
 }
@@ -1555,6 +1608,11 @@ main {
 
 .summary__item-wrapper.operatingsystem {
 	width: 100%;
+}
+
+.summary__item-wrapper.top-staking-merit:not(:last-of-type) {
+	margin-bottom: 0;
+	margin-right: 0;
 }
 
 .summary__item-wrapper.topecosystems-catalist,
