@@ -1,4 +1,20 @@
 /*
+    モジュール
+*/
+
+/*
+    footer
+*/
+
+/*
+    footer end
+*/
+
+/*
+    header end
+*/
+
+/*
     リセットCSS等の基本設定
 */
 
@@ -294,22 +310,6 @@ select:focus {
 	overflow: hidden;
 }
 
-/*
-    モジュール
-*/
-
-/*
-    footer
-*/
-
-/*
-    footer end
-*/
-
-/*
-    header end
-*/
-
 .header {
 	background: #002C59;
 	color: #fff;
@@ -444,6 +444,11 @@ select:focus {
 	margin: auto;
 	padding: 10px 20px;
 	width: 200px;
+}
+
+.viewmorebutton.wide {
+	max-width: 300px;
+	width: 300px;
 }
 
 .viewmorebutton.white {
@@ -733,7 +738,7 @@ select:focus {
 
 .hexagon {
 	align-items: center;
-	background-image: url(/images/main/hexagon.svg);
+	background-image: url(./img/main/hexagon.svg);
 	background-position: center;
 	display: flex;
 	height: 220px;
@@ -791,7 +796,7 @@ select:focus {
 }
 
 main {
-	background-image: url(../images/summary/summary_bg.svg);
+	background-image: url(../img/summary/summary_bg.svg);
 }
 
 .faq__bg-color {
@@ -799,7 +804,7 @@ main {
 }
 
 .faq__bg-image {
-	background-image: url(../images/summary/summaryfaq_bg.svg);
+	background-image: url(../img/summary/summaryfaq_bg.svg);
 	background-repeat: repeat;
 	background-size: cover;
 }
@@ -845,10 +850,10 @@ main {
 }
 
 .category__item {
-	-o-border-image: url("../images/main/linear_frame.svg");
+	-o-border-image: url("../img/main/linear_frame.svg");
 	background: #fff;
 	border: solid 2px transparent;
-	border-image: url("../images/main/linear_frame.svg");
+	border-image: url("../img/main/linear_frame.svg");
 	border-image-repeat: stretch;
 	border-image-slice: 1;
 	font-weight: 600;
@@ -969,11 +974,6 @@ main {
 	width: calc((100% / 3) - 20px);
 }
 
-.summary__item-wrapper.youtube iframe {
-	height: auto;
-	width: 100%;
-}
-
 .summary__item-wrapper.topnews {
 	border: 1px solid #002C59;
 	height: auto;
@@ -1032,9 +1032,9 @@ main {
 }
 
 .summary__item-wrapper.aboutcardano {
-	-o-border-image: url(../images/main/linear_frame.svg);
+	-o-border-image: url(../img/main/linear_frame.svg);
 	border: solid 2px transparent;
-	border-image: url(../images/main/linear_frame.svg);
+	border-image: url(../img/main/linear_frame.svg);
 	border-image-repeat: stretch;
 	border-image-slice: 1;
 	height: auto;
@@ -1120,12 +1120,73 @@ main {
 	text-align-last: left;
 }
 
+.staking-youtubearea {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.staking-youtubearea p {
+	display: inline-block;
+	font-size: 24px;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.staking-youtubearea p::before {
+	-webkit-transform: rotate(-25deg);
+	background: #002C59;
+	content: "";
+	display: block;
+	height: 40px;
+	left: -30px;
+	position: absolute;
+	top: 0;
+	transform: rotate(-25deg);
+	width: 2px;
+}
+
+.staking-youtubearea p::after {
+	-webkit-transform: rotate(25deg);
+	background: #002C59;
+	content: "";
+	display: block;
+	height: 40px;
+	position: absolute;
+	right: -30px;
+	top: 0;
+	transform: rotate(25deg);
+	width: 2px;
+}
+
+.performance-area {
+	margin-top: 20px;
+}
+
+.aboutstaking {
+	align-items: center;
+	display: flex;
+}
+
+.aboutstaking .aboutstaking-text {
+	padding: 20px;
+}
+
+.aboutstaking .aboutstaking-image {
+	padding: 20px;
+}
+
+.aboutstaking.reverse {
+	flex-direction: row-reverse;
+}
+
 .poolinfo__box {
-	-o-border-image: url(../images/main/linear_frame.svg);
+	-o-border-image: url(../img/main/linear_frame.svg);
 	align-items: center;
 	background: #fff;
 	border: solid 4px transparent;
-	border-image: url(../images/main/linear_frame.svg);
+	border-image: url(../img/main/linear_frame.svg);
 	border-image-repeat: stretch;
 	border-image-slice: 1;
 	display: flex;
@@ -1166,11 +1227,45 @@ main {
 
 .staking-flow {
 	position: relative;
+	width: 30%;
+}
+
+.staking-flow.daidarosu {
+	background-image: url("../img/summary/daidarosu.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 400px;
+	vertical-align: middle;
+}
+
+.staking-flow.yoroipc {
+	background-image: url("../img/summary/yoroi_pc.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 400px;
+	vertical-align: middle;
+}
+
+.staking-flow.yoroisp {
+	background-image: url("../img/summary/yoroi_sp.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 400px;
+	vertical-align: middle;
+}
+
+.staking-flow .staking-flow-heading {
+	padding-top: 80px;
+	text-align: center;
+}
+
+.staking-flow .staking-flow-despriction {
+	padding: 40px 20px 20px 20px;
 }
 
 .staking-flow .staking_button {
 	-webkit-transform: translateX(-50%);
-	bottom: 30px;
+	bottom: 80px;
 	left: 50%;
 	position: absolute;
 	transform: translateX(-50%);
@@ -1317,7 +1412,7 @@ main {
 }
 
 .insitelinks-wrapper.insitelinks_read::before {
-	background-image: url("../images/summary/insitelinks_read.svg");
+	background-image: url("../img/summary/insitelinks_read.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	content: '';
@@ -1331,7 +1426,7 @@ main {
 }
 
 .insitelinks-wrapper.insitelinks_memo::before {
-	background-image: url("../images/summary/insitelinks_memo.svg");
+	background-image: url("../img/summary/insitelinks_memo.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	content: '';
@@ -1345,7 +1440,7 @@ main {
 }
 
 .insitelinks-wrapper.insitelinks_check::before {
-	background-image: url("../images/summary/insitelinks_check.svg");
+	background-image: url("../img/summary/insitelinks_check.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	content: '';
@@ -1359,7 +1454,7 @@ main {
 }
 
 .insitelinks-wrapper.insitelinks_matome::before {
-	background-image: url("../images/summary/insitelinks_matome.svg");
+	background-image: url("../img/summary/insitelinks_matome.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	content: '';
@@ -1414,7 +1509,7 @@ main {
 }
 
 .gadget__wide {
-	background: url("../images/summary/banner_wide.svg") center/cover no-repeat;
+	background: url("../img/summary/banner_wide.svg") center/cover no-repeat;
 	display: flex;
 	height: 278px;
 }
@@ -1437,7 +1532,7 @@ main {
 }
 
 .gadget__square-item {
-	background: url("../images/summary/banner_square.svg") center/contain no-repeat;
+	background: url("../img/summary/banner_square.svg") center/contain no-repeat;
 	display: flex;
 	height: 190px;
 	width: 50%;
@@ -1467,6 +1562,10 @@ main {
 }
 
 @media (max-width: 768px) {
+
+.contents__inner {
+	padding: 0 20px;
+}
 
 .header .common__scrollbutton {
 	height: 70px;
@@ -1598,6 +1697,11 @@ main {
 	width: 100%;
 }
 
+.summary__item-wrapper.youtube iframe {
+	height: auto;
+	width: 100%;
+}
+
 .summary__item-wrapper.topnews {
 	width: 100%;
 }
@@ -1620,7 +1724,45 @@ main {
 	width: 100%;
 }
 
+.summary__item-wrapper.staking-merit {
+	text-align: center;
+	width: 100%;
+}
+
 .summary__item-wrapper.aboutcardano {
+	width: 100%;
+}
+
+.staking-youtubearea iframe {
+	width: 100%;
+}
+
+.aboutstaking {
+	display: block;
+}
+
+.aboutstaking .aboutstaking-text {
+	padding: 1px;
+}
+
+.aboutstaking .aboutstaking-image {
+	display: block;
+	margin: auto;
+	max-width: 300px;
+	padding: 20px 0;
+	width: 300px;
+}
+
+.staking-flow {
+	width: 100%;
+}
+
+.performance-image {
+	max-width: 300px;
+}
+
+.performance-area-item {
+	text-align: center;
 	width: 100%;
 }
 

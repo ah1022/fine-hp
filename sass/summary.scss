@@ -5,6 +5,268 @@
 @import "block/**";
 @import "main.scss";
 
+
+/*
+    リセットCSS等の基本設定
+*/
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: $ff-base;
+	font-size: $fz-base;
+	font-weight: $fw-base;
+	color: $TextColor;
+	line-height: $lh-base;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+}
+
+h1,h2,h3,h4,h5,h6,
+a,p,span,
+blockquote,code,
+ol,ul,li,dl,dt,dd,
+div,section,article,main,aside,
+nav,header,footer,
+img,figure,figcaption,
+address,time,audio,video,
+iframe,fieldset,
+form,label,table,caption,
+tbody,tfoot,thead,
+tr,th,td {
+  margin:0;
+  padding:0;
+  border: 0;
+}
+
+article,aside,footer,header,nav,section,main {
+	display: block;
+}
+
+li,ol{
+  list-style: none;
+}
+
+a{
+	color:inherit;
+}
+
+a:link,a:visited,a:hover,a:active{
+  text-decoration: none;
+}
+
+
+th,td {
+	padding: 4px 6px;
+	text-align: left;
+	vertical-align: top;
+	border: 1px solid $MainColor;
+}
+
+
+input,textarea {
+	padding: 8px;
+	border: 1px solid $MainColor;
+	border-radius: 0;
+	background-image: none;
+	font-family: inherit;
+	font-size: inherit;
+	-webkit-appearance: none;
+
+	&:focus {
+		outline: none;
+		border: 1px solid $MainColor;
+		box-shadow: none;
+	}
+}
+
+textarea {
+	resize: none;
+}
+
+input {
+
+	&[type="submit"] {
+		cursor: pointer;
+		border: none;
+
+		&:hover,
+		&:focus {
+			outline: none;
+			border: none;
+		}
+
+		::-moz-focus-inner {
+			padding: 0;
+			border: none;
+		}
+	}
+
+	&[type="radio"] {
+		display: none;
+
+		+ span {
+			display: inline-block;
+			position: relative;
+			padding: 0 0 0 1.2em;
+			margin: 0 0.2em 0;
+			cursor: pointer;
+
+			&::before {
+				position: absolute;
+				content: "";
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%);
+				background: #fff;
+				border: 1px solid $MainColor;
+				border-radius: 50%;
+				width: 1em;
+				height: 1em;
+				display: block;
+			}
+
+			&::after {
+				opacity: 0;
+				transition: opacity 0.3s ease 0s;
+			}
+
+			&:focus,
+			&:checked {
+				outline: none;
+				border: 1px solid #fff;
+				box-shadow: none;
+				background: $MainColor;
+			}
+		}
+
+		&:checked + span {
+
+			&::after {
+				position: absolute;
+				content: "";
+				top: 50%;
+				left: 0.2em;
+				transform: translateY(-50%);
+				background: $MainColor;
+				border-radius: 50%;
+				width: 0.6em;
+				height: 0.6em;
+				display: block;
+				opacity: 1;
+			}
+		}
+	}
+
+	&[type="checkbox"] {
+		display: none;
+
+		+ span {
+			display: inline-block;
+			position: relative;
+			padding: 0 0 0 1.2em;
+			margin: 0 0.2em 0;
+			cursor: pointer;
+			transition: all 0.3s ease 0s;
+
+			&::before {
+				position: absolute;
+				content: "";
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%);
+				background: #fff;
+				border: 1px solid $MainColor;
+				border-radius: 2px;
+				width: 1em;
+				height: 1em;
+				display: block;
+			}
+
+			&::after {
+				opacity: 0;
+				transition: opacity 0.3s ease 0s;
+			}
+		}
+
+		&:checked + span {
+
+			&::after {
+				position: absolute;
+				content: "";
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%) rotate(-45deg);
+				width: 1em;
+				height: 0.6em;
+				margin-top: -0.2em;
+				display: block;
+				border-left: 3px solid $MainColor;
+				border-bottom: 3px solid $MainColor;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+select {
+	width: 100%;
+	padding: 8px 24px 8px 8px;
+	border-radius: 0;
+	background-image: none;
+	border: 1px solid $MainColor;
+	font-family: inherit;
+	font-size: 1em;
+	cursor: pointer;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+
+	&::-ms-expand {
+		display: none;
+	}
+
+	&:focus {
+		outline: none;
+		border: 1px solid $MainColor;
+		box-shadow: none;
+	}
+}
+
+.hidden{
+  display: none;
+}
+
+.inner{
+  margin: 0 auto;
+  max-width: 100%;
+  width: 1400px;
+}
+
+.contents__inner{
+  margin: 0 auto;
+  max-width: 100%;
+  width: 1000px;
+	padding: 0 10px;
+  @include sp(){
+    padding: 0 20px;
+  }
+}
+
+.wrapper{
+  overflow: hidden;
+}
+
 // トップページ
 // 共通パーツ
 .header {
@@ -149,6 +411,10 @@
   font-size: $fz-m;
   display: flex;
   justify-content: space-between;
+  &.wide{
+    max-width: 300px;
+    width: 300px;
+  }
   &.white{
   color:#fff;
   border: 1px solid #fff;
@@ -449,7 +715,7 @@
 }
 
 .hexagon{
-  background-image: url(/images/main/hexagon.svg);
+  background-image: url(./img/main/hexagon.svg);
   background-position: center;
   width:220px;
   height: 220px;
@@ -509,7 +775,7 @@
 // 下層ページ
 
 main{
-  background-image: url(../images/summary/summary_bg.svg);
+  background-image: url(../img/summary/summary_bg.svg);
 }
 
 .faq__bg-color{
@@ -517,7 +783,7 @@ main{
 }
 
 .faq__bg-image{
-  background-image: url(../images/summary/summaryfaq_bg.svg);
+  background-image: url(../img/summary/summaryfaq_bg.svg);
   background-repeat: repeat;
   background-size: cover;
 }
@@ -582,7 +848,7 @@ main{
     height: auto;
     text-align: center;
     border: solid 2px transparent;
-    border-image: url("../images/main/linear_frame.svg");
+    border-image: url("../img/main/linear_frame.svg");
     border-image-slice: 1;
     border-image-repeat: stretch;
     background: #fff;
@@ -717,8 +983,10 @@ main{
         width: 100%;
       }
       iframe{
+        @include sp(){
         width: 100%;
         height: auto;
+        }
       }
     }
     &-wrapper.topnews{
@@ -780,6 +1048,12 @@ main{
         height: auto;
       }
     }
+    &-wrapper.staking-merit{
+      @include sp(){
+        width: 100%;
+        text-align: center;
+      }
+    }
     img{
       width: 100%;
     }
@@ -788,7 +1062,7 @@ main{
       margin-bottom: 70px;
       width: calc((100% / 2) - 20px);
       border: solid 2px transparent;
-      border-image: url(../images/main/linear_frame.svg);
+      border-image: url(../img/main/linear_frame.svg);
       border-image-repeat: stretch;
       border-image-slice: 1;
       position: relative;
@@ -864,6 +1138,83 @@ main{
   text-align-last: left;
 }
 
+.staking-youtubearea{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  iframe{
+    @include sp(){
+    width: 100%;
+    }
+  }
+  p{
+    font-size: 24px;
+    position: relative;
+    margin-bottom: 20px;
+    display: inline-block;
+    &::before{
+      content:"";
+      display: block;
+      background: $MainColor;
+      position: absolute;
+      height: 40px;
+      width: 2px;
+      top: 0;
+      left: -30px;
+      transform: rotate(-25deg);
+    }
+    &::after{
+      content:"";
+      display: block;
+      background: $MainColor;
+      position: absolute;
+      height: 40px;
+      width: 2px;
+      top: 0;
+      right: -30px;
+      transform: rotate(25deg);
+    }
+  }
+}
+
+.performance-area{
+  margin-top: 20px;
+}
+
+// .aboutstakingarea{
+//   @include sp(){
+//     display: block;
+//   }
+// }
+
+.aboutstaking{
+  display: flex;
+  align-items: center;
+  @include sp(){
+      display: block;
+    }
+  .aboutstaking-text{
+    padding: 20px;
+    @include sp(){
+      padding: 1px;
+    }
+  }
+  .aboutstaking-image{
+    padding: 20px;
+    @include sp(){
+      padding: 20px 0;
+      width: 300px;
+      max-width: 300px;
+      display: block;
+      margin: auto;
+    }
+  }
+  &.reverse{
+    flex-direction: row-reverse;
+  }
+}
+
 // ーーーープール基本情報ーーーー
 .poolinfo__box{
   display: flex;
@@ -871,7 +1222,7 @@ main{
   align-items: center;
   background: #fff;
   border: solid 4px transparent;
-  border-image: url(../images/main/linear_frame.svg);
+  border-image: url(../img/main/linear_frame.svg);
   border-image-repeat: stretch;
   border-image-slice: 1;
   &:not(:last-of-type){
@@ -905,9 +1256,41 @@ main{
 
 .staking-flow{
   position: relative;
+  width: 30%;
+  @include sp(){
+    width: 100%;
+  }
+  &.daidarosu{
+    background-image: url("../img/summary/daidarosu.svg");
+    background-size: contain;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    height: 400px;
+  }
+  &.yoroipc{
+    background-image: url("../img/summary/yoroi_pc.svg");
+    background-size: contain;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    height: 400px;
+  }
+  &.yoroisp{
+    background-image: url("../img/summary/yoroi_sp.svg");
+    background-size: contain;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    height: 400px;
+  }
+  .staking-flow-heading{
+    text-align: center;
+    padding-top: 80px;
+  }
+  .staking-flow-despriction{
+    padding: 40px 20px 20px 20px;
+  }
   .staking_button{
     position: absolute;
-    bottom: 30px;
+    bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -1060,7 +1443,7 @@ main{
       display: inline-block;
       width: 120px;
       height: 20px;
-      background-image: url("../images/summary/insitelinks_read.svg");
+      background-image: url("../img/summary/insitelinks_read.svg");
       background-size: contain;
       vertical-align: middle;
       background-repeat: no-repeat;
@@ -1076,7 +1459,7 @@ main{
       display: inline-block;
       width: 120px;
       height: 20px;
-      background-image: url("../images/summary/insitelinks_memo.svg");
+      background-image: url("../img/summary/insitelinks_memo.svg");
       background-size: contain;
       vertical-align: middle;
       background-repeat: no-repeat;
@@ -1092,7 +1475,7 @@ main{
       display: inline-block;
       width: 120px;
       height: 20px;
-      background-image: url("../images/summary/insitelinks_check.svg");
+      background-image: url("../img/summary/insitelinks_check.svg");
       background-size: contain;
       vertical-align: middle;
       background-repeat: no-repeat;
@@ -1108,7 +1491,7 @@ main{
       display: inline-block;
       width: 120px;
       height: 20px;
-      background-image: url("../images/summary/insitelinks_matome.svg");
+      background-image: url("../img/summary/insitelinks_matome.svg");
       background-size: contain;
       vertical-align: middle;
       background-repeat: no-repeat;
@@ -1159,7 +1542,7 @@ main{
 
 .gadget{
   &__wide{
-    background: url('../images/summary/banner_wide.svg') center / cover no-repeat; 
+    background: url('../img/summary/banner_wide.svg') center / cover no-repeat; 
     height: 278px;
     display: flex;
   }
@@ -1179,7 +1562,7 @@ main{
     padding: 10px;
   }
   &__square-item{
-    background: url('../images/summary/banner_square.svg') center/contain no-repeat;
+    background: url('../img/summary/banner_square.svg') center/contain no-repeat;
     display: flex;
     height: 190px;
     width: 50%;
@@ -1190,3 +1573,17 @@ main{
   margin-bottom: 50px;
 }
 
+
+.performance-image{
+  @include sp() {
+    max-width: 300px;
+  }
+
+}
+
+.performance-area-item{
+  @include sp() {
+    width: 100%;
+    text-align: center;
+  }
+}
