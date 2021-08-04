@@ -7,7 +7,9 @@
     <title></title>
     <meta name="description" content="">
     <meta name="keywords" content="">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <!--style css-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/style.css" media="all">
     <link rel="stylesheet" href="css/summary.css" media="all">
     <!--font-awesome-->
@@ -25,29 +27,26 @@
 
         <!-- header -->
         <header class="header">
-            <div class="inner">
-                <nav>
-                    <ul class="g-navi">
-                        <li class="g-navi__list"><a href="/summary/news/">ニュース一覧</a></li>
-                        <li class="g-navi__list"><a href="/summary/youtube/">Youtube</a></li>
-                        <li class="g-navi__list"><a href="/summary/ecosystems/">ecosystems</a></li>
-                        <li class="g-navi__list"><a href="/summary/faq/">FAQ</a></li>
-                        <li class="g-navi__list"><a href="/summary/staking/">staking</a></li>
-                        <li class="g-navi__list"><a href="/summary/reports/">運用レポート</a></li>
-                        <li class="g-navi__list"><a href="/summary/blogs/">ブログ</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="breadcrumb">
-                <ol class="breadcrumb__inner">
-                    <li class="breadcrumb__list">
-                        <a href="">TOP</a>
-                    </li >
-                    <li class="breadcrumb__list">
-                        <a href="">最新情報一覧</a>
-                    </li>
-                </ol>
-            </div>
+          <div id="wrapper">
+
+            <nav class="menu">
+              <ul>
+                <li class="g-navi__list"><a href="/reports/">運用レポート</a></li>
+                <li class="g-navi__list"><a href="/youtube/">Youtube一覧</a></li>
+                <li class="g-navi__list"><a href="/ecosystems/">エコシステム一覧</a></li>
+                <li class="g-navi__list"><a href="/staking/">ステーキングについて</a></li>
+                <li class="g-navi__list"><a href="/news/">news</a></li>
+                <li class="g-navi__list"><a href="/faq/">faq</a></li>
+              </ul>
+            </nav>
+          
+            <button type="button" id="nav-btn" class="hamburger">
+              <span class="bdr"></span>
+              <span class="bdr"></span>
+              <span class="bdr"></span>
+            </button>
+          
+          </div><!-- wrapper -->
             <a href="" class="common__scrollbutton">
                 <p class="common__scrollbutton-text">ステーキングはこちら</p>
                 <img src="./img/main/button_arrow-white.svg" alt="" class="common__scrollbutton-allow">
@@ -55,13 +54,53 @@
             
         </header><!-- header end -->
         <main class="topmain">
-            <!-- fv -->
-            <section class="fv">
-              <div class="section__title-wrapper">
-                <p class="section__title-en linerline">ファーストビュー</p>
-                <h1 class="section__title-ja">ファーストビュー</h1>
+            <!-- fv -->   
+            <div class="swiper-container slide1">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="bg-slide-image image1" >
+                  
+                    <div class="section__title-wrapper fv-contents">
+                      <h1 class="section__title-ja text-white fv-contents-text">ファーストビュー</h1>
+                      <a href="" class="viewmorebutton white">
+                        <p class="viewmorebutton-text">view more</p>
+                        <div class="viewmorebutton-arrow"><img src="./img/main/button_arrow-white.svg" alt=""></div>
+                    </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="bg-slide-image image2" >
+                  
+                    <div class="section__title-wrapper fv-contents">
+                      <h1 class="section__title-ja text-white fv-contents-text">ファーストビュー</h1>
+                      <a href="" class="viewmorebutton white">
+                        <p class="viewmorebutton-text">view more</p>
+                        <div class="viewmorebutton-arrow"><img src="./img/main/button_arrow-white.svg" alt=""></div>
+                    </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="bg-slide-image image3" >
+                  
+                    <div class="section__title-wrapper fv-contents">
+                      <h1 class="section__title-ja text-white fv-contents-text">ファーストビュー</h1>
+                      <a href="" class="viewmorebutton white">
+                        <p class="viewmorebutton-text">view more</p>
+                        <div class="viewmorebutton-arrow"><img src="./img/main/button_arrow-white.svg" alt=""></div>
+                    </a>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </section><!-- fv end -->
+              <div class="swiper-pagination"></div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>     
+             
+            
+            <!-- fv end -->
   
             <!--バナー -->
             <section class="topbanner">
@@ -94,41 +133,88 @@
             </section> 
   
             <!-- ピックアップ記事 -->
+            
             <section class="toppicup">
-              <ul class="toppicup__contents contents__inner">
-                <li class="toppicup__item-wrapper blog">
-                  <a href="" class="toppicup__item">
-                    <img src="../../img/summary/dammy.png" alt="">
-                    <div class="toppicup__texts">
-                      <p class="toppicup__texts-first">エコシステムについて解説しますエコシステムについて解説します</p>
-                      <p class="toppicup__texts-second">2021.5.31</p></div>
-                  </a>
-                </li>
-                <li class="toppicup__item-wrapper blog">
-                    <a href="" class="toppicup__item">
-                      <img src="../../img/summary/dammy.png" alt="">
-                      <div class="toppicup__texts">
-                        <p class="toppicup__texts-first">エコシステムについて解説しますエコシステムについて解説します</p>
-                        <p class="toppicup__texts-second">2021.5.31</p></div>
-                    </a>
-                  </li>
-                  <li class="toppicup__item-wrapper blog">
-                    <a href="" class="toppicup__item">
-                      <img src="../../img/summary/dammy.png" alt="">
-                      <div class="toppicup__texts">
-                        <p class="toppicup__texts-first">エコシステムについて解説しますエコシステムについて解説します</p>
-                        <p class="toppicup__texts-second">2021.5.31</p></div>
-                    </a>
-                  </li>
-                  <li class="toppicup__item-wrapper blog">
-                    <a href="" class="toppicup__item">
-                      <img src="../../img/summary/dammy.png" alt="">
-                      <div class="toppicup__texts">
-                        <p class="toppicup__texts-first">エコシステムについて解説しますエコシステムについて解説します</p>
-                        <p class="toppicup__texts-second">2021.5.31</p></div>
-                    </a>
-                  </li>
-              </ul>
+              <div class="swiper-container slide2">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <ul class="toppicup__contents contents__inner">
+                      <li class="toppicup__item-wrapper blog">
+                        <a href="" class="toppicup__item">
+                          <img src="../../img/summary/dammy.png" alt="">
+                          <div class="toppicup__texts">
+                            <p class="toppicup__texts-first">エコシステムについて解説しますエコシステムについて解説します</p>
+                            <p class="toppicup__texts-second">2021.5.31</p></div>
+                        </a>
+                      </li>
+                      <li class="toppicup__item-wrapper blog">
+                          <a href="" class="toppicup__item">
+                            <img src="../../img/summary/dammy.png" alt="">
+                            <div class="toppicup__texts">
+                              <p class="toppicup__texts-first">エコシステムについて解説しますエコシステムについて解説します</p>
+                              <p class="toppicup__texts-second">2021.5.31</p></div>
+                          </a>
+                        </li>
+                        <li class="toppicup__item-wrapper blog">
+                          <a href="" class="toppicup__item">
+                            <img src="../../img/summary/dammy.png" alt="">
+                            <div class="toppicup__texts">
+                              <p class="toppicup__texts-first">エコシステムについて解説しますエコシステムについて解説します</p>
+                              <p class="toppicup__texts-second">2021.5.31</p></div>
+                          </a>
+                        </li>
+                        <li class="toppicup__item-wrapper blog">
+                          <a href="" class="toppicup__item">
+                            <img src="../../img/summary/dammy.png" alt="">
+                            <div class="toppicup__texts">
+                              <p class="toppicup__texts-first">エコシステムについて解説しますエコシステムについて解説します</p>
+                              <p class="toppicup__texts-second">2021.5.31</p></div>
+                          </a>
+                        </li>
+                    </ul>
+                  </div>
+                  <div class="swiper-slide">
+                    <ul class="toppicup__contents contents__inner">
+                      <li class="toppicup__item-wrapper blog">
+                        <a href="" class="toppicup__item">
+                          <img src="../../img/summary/dammy.png" alt="">
+                          <div class="toppicup__texts">
+                            <p class="toppicup__texts-first">エコシステムについて解説しますエコシステムについて解説します</p>
+                            <p class="toppicup__texts-second">2021.5.31</p></div>
+                        </a>
+                      </li>
+                      <li class="toppicup__item-wrapper blog">
+                          <a href="" class="toppicup__item">
+                            <img src="../../img/summary/dammy.png" alt="">
+                            <div class="toppicup__texts">
+                              <p class="toppicup__texts-first">エコシステムについて解説しますエコシステムについて解説します</p>
+                              <p class="toppicup__texts-second">2021.5.31</p></div>
+                          </a>
+                        </li>
+                        <li class="toppicup__item-wrapper blog">
+                          <a href="" class="toppicup__item">
+                            <img src="../../img/summary/dammy.png" alt="">
+                            <div class="toppicup__texts">
+                              <p class="toppicup__texts-first">エコシステムについて解説しますエコシステムについて解説します</p>
+                              <p class="toppicup__texts-second">2021.5.31</p></div>
+                          </a>
+                        </li>
+                        <li class="toppicup__item-wrapper blog">
+                          <a href="" class="toppicup__item">
+                            <img src="../../img/summary/dammy.png" alt="">
+                            <div class="toppicup__texts">
+                              <p class="toppicup__texts-first">エコシステムについて解説しますエコシステムについて解説します</p>
+                              <p class="toppicup__texts-second">2021.5.31</p></div>
+                          </a>
+                        </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev picup"></div>
+                <div class="swiper-button-next picup"></div>
+              </div> 
+
               <a href="" class="viewmorebutton blue">
                 <p class="viewmorebutton-text">view more</p>
                 <div class="viewmorebutton-arrow"><img src="./img/main/button_arrow-blue.svg" alt=""></div>
@@ -638,6 +724,20 @@
         
     </main>
 
+    <footer class="footer">
+            
+      <div class="summary__contents contents__inner">
+        <div class="inner footer__texts">
+          <h2 class="inner footer__texts-heading">Staking</h2>
+          <div class="footer__texts-despriction">委任方法はこちら委任方法はこちら委任方法はこちら委任方法はこちら委任方法はこちら委任方法はこちら<br></div>
+        </div>
+        <a href="/staking/" class="cvbutton">
+          <p class="viewmorebutton-text">詳しくはこちら</p>
+          <div class="viewmorebutton-arrow"><img src="./img/main/button_arrow-white.svg" alt=""></div>
+      </a>
+      </div>
+  </footer>
+
 
     </div>
     <!--wrapper end-->
@@ -647,7 +747,6 @@
     <!-- wow -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 
-    
 </body>
 
 </html>
