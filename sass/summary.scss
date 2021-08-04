@@ -312,10 +312,6 @@ a {
   transition: .4s transform;
 }
 
-#contents {
-  height: 1000px;
-  background-color: #ddd;
-}
 
 #nav-btn {
   display: none;
@@ -329,11 +325,11 @@ a {
     justify-content: flex-end;
     align-items: center;
     height: 70px;
-    background: $MainColor;
     li {
-      padding: 0 10px;
+      padding: 0 20px;
       transition: all .5s;
       a {
+        font-size: 16px;
         position: relative;
         display: inline-block;
         text-decoration: none;
@@ -357,7 +353,131 @@ a {
   }
 }
 
-@include mobile {
+#menu-wrapper {
+  overflow: hidden;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+
+#menu-wrapper #hamburger-menu {
+  position: relative;
+  width: 25px;
+  height: 20px;
+  margin: 15px;
+}
+
+#menu-wrapper #hamburger-menu span {
+  opacity: 1;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 10px;
+  color: black;
+  background-color: white;
+  position: absolute;
+  transform: rotate(0deg);
+  transition: .4s ease-in-out;
+}
+
+#menu-wrapper #hamburger-menu span:nth-child(1) {
+  top: 0;
+}
+#menu-wrapper #hamburger-menu span:nth-child(2) {
+  top: 9px;
+}
+#menu-wrapper #hamburger-menu span:nth-child(3) {
+  top: 18px;
+}
+#menu-wrapper #hamburger-menu.open span:nth-child(1) {
+  transform: translateY(9px) rotate(135deg);
+}
+#menu-wrapper #hamburger-menu.open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+#menu-wrapper #hamburger-menu.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-135deg);
+}
+
+#menu-container .menu-list .menu-submenu {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#menu-container .menu-list {
+  padding-left: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  box-shadow: rgba(100,100,100,0.2) 6px 2px 10px;
+  z-index: 999;
+  overflow-y: auto;
+  overflow-x: hidden;
+  left: -100%;
+}
+
+#menu-container .menu-list li.accordion-toggle, #menu-container .menu-list .menu-login {
+  font-size: 16px;
+  padding: 20px;
+  text-transform: uppercase;
+  border-top: 1px solid #dbdcd2;
+}
+#menu-container .menu-list li:first-of-type {
+  border-top: 0;
+}
+
+.accordion-toggle, .accordion-content {
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  letter-spacing: 1px;
+}
+
+.accordion-content {
+  display: none;
+}
+
+.accordion-toggle a:before, .accordion-toggle a:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  width: 15px;
+  height: 2px;
+  margin-top: -1px;
+  background-color: #5a5858;
+  transform-origin: 50% 50%;
+  transition: all 0.3s ease-out;
+}
+
+.accordion-toggle a:before {
+  transform: rotate(-90deg);
+  opacity: 1;
+  z-index: 2;
+}
+
+.accordion-toggle.active-tab {
+background: yellowgreen;
+transition: all 0.3s ease;
+}
+.accordion-toggle a.active:before {
+  transform: rotate(0deg);
+  background: #fff !important;
+}
+
+.accordion-toggle a.active:after {
+  transform: rotate(180deg);
+  background: #fff !important;
+  opacity: 0;
+}
+
+
+
+@include sp() {
   #nav-btn {
     display: block;
     position: fixed;
@@ -383,10 +503,10 @@ a {
       background: #fff;
       transition: all .5s;
       &:nth-child(1) {
-        top: 0;
+        top: 4px;
       }
       &:nth-child(2) {
-        top: 20px;
+        top: 16px;
       }
       &:nth-child(3) {
         bottom: 8px;
@@ -403,25 +523,22 @@ a {
     position: fixed;
     top: 0;
     right: 0;
-    width: 150px;
-    height: 100%;
     text-align: left;
     font-size: 13px;
-    background: $MainColor;
     z-index: 1;
-    transform: translateX(150px);
+    transform: translateX(200px);
     transition: .4s all;
     ul {
       display: block;
-      width: 150px;
-      line-height: 70px;
       background: none;
       color: #000;
       text-align: center;
       li {
         transition: all .5s;
+        background: $MainColor;
+        padding: 20px;
         &:hover {
-          background: #fff;
+          opacity: 0.7;
         }
         a {
           &:after {
@@ -435,6 +552,9 @@ a {
     .menu{
     transform: translateX(0);
     z-index: 7;
+    li{
+      padding: 20px;
+    }
     }
     #contents{
       transform: translateX(-150px);
@@ -442,9 +562,15 @@ a {
   }
 }
 .header {
-    position: relative;
-    background: $MainColor;
+    position: absolute;
+    top: 0;
+    z-index: 11111;
+    left: 0;
+    right: 50px;
     color: #fff;
+    @include sp(){
+      position: fixed;
+    }
     a {
         color: #fff;
     }
@@ -455,6 +581,13 @@ a {
         &__item:not(:last-of-type) {
             margin-right: 50px;
         }
+    }
+    &.header-fixed{
+      @include sp(){
+      background:  rgba(1,44,89,0.5);
+      width: 100%;
+      height: 42px;
+      }
     }
     .breadcrumb { 
         background: #000;
@@ -594,10 +727,16 @@ a {
   &.white{
   color:#fff;
   border: 1px solid #fff;
+    &:hover{
+      opacity: 0.7;
+  }
   }
   &.blue{
     color:$MainColor;
     border: 1px solid $MainColor;
+    &:hover{
+      opacity: 0.7;
+    }
     }
   .viewmorebutton-arrow{
     display: flex;
@@ -616,9 +755,14 @@ a {
   color:#fff;
   display: flex;
   justify-content: center;
+  transition: .3s all;
   .viewmorebutton-arrow{
     display: flex;
     margin-left: 10px;
+  }
+  &:hover{
+    background: #a04d00;
+    transition: .3s all;
   }
   @include sp(){
     width: 330px;
@@ -759,6 +903,9 @@ a {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    @include sp() {
+      padding: 0 50px;
+    }
   }
 
   &__item{
@@ -942,8 +1089,33 @@ a {
     position: absolute;
     left: 50%;
     top: 48%;
+    @include sp(){
+      top: 39%;
+      width: 20px;
+    }
+
+    
+  }
+  @include sp (){
+    bottom: 20px;
+    height: 48px;
+    right: 12px;
+    width: 48px;
   }
 }
+
+.aboutcardano-item{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  @include sp(){
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+  }
+}
+
 
 
 .topecosystems-catalist-image{
@@ -995,6 +1167,9 @@ main{
   &.picup{
     color: $MainColor;
     left: 280px;
+    @include sp(){
+      left: 20px;
+    }
   }
   @include sp(){
     left: 20px;
@@ -1008,6 +1183,9 @@ main{
   &.picup{
     color: $MainColor;
     right: 280px;
+    @include sp(){
+      right: 20px;
+    }
   }
   @include sp(){
     right: 20px;
@@ -1045,6 +1223,12 @@ main{
   background: #fff;
 }
 
+.fv {
+	background: #002C59;
+	color: #FFF;
+	padding: 50px;
+	text-align: center;
+}
 
 .fv-contents{
   position: absolute;
@@ -1481,7 +1665,6 @@ main{
 
 // ーーーープール基本情報ーーーー
 .poolinfo__box{
-  display: flex;
   padding: 10px;
   align-items: center;
   background: #fff;
@@ -1489,16 +1672,23 @@ main{
   border-image: url(../img/main/linear_frame.svg);
   border-image-repeat: stretch;
   border-image-slice: 1;
+  @include pc(){
+    display: flex;
+  }
   &:not(:last-of-type){
     margin-bottom: 30px;
   }
   .poolinfo__box-text{
-    margin-left: 20px;
     font-weight: $fw-bold;
+    @include pc(){
+      margin-left: 20px;
+    }
     li{
       padding: 10px;
       overflow-wrap: break-word;
-      max-width: 429px;
+      @include sp(){
+        max-width: 320px;
+      }
       &:not(:last-of-type){
         border-bottom: 1px solid #DFDFDF;
       }
@@ -1578,11 +1768,16 @@ main{
   color:#fff;
 }
 .footer__texts-heading{
-  font-size: 20px;
+  font-style: italic;
+  font-size: 35px;
   margin: 50px 0 30px 0;
+  @include sp(){
+    font-size: 20px;
+  }
 }
 .footer__texts-despriction{
   font-weight: $fw-bold;
+  margin-top: 20px;
   margin-bottom: 30px;
 }
 

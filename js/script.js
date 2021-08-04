@@ -1,3 +1,17 @@
+// スクロールイベント
+window.addEventListener( "scroll", function() {
+
+  var headerElement = document.getElementById( "header" ) ; // `#header`セレクタを取得
+  var rect = headerElement.getBoundingClientRect() ; // 
+  var y = rect.top + window.pageYOffset ; // Y方向 (縦)にスクロール量を取得（pageYOffset：windowオブジェクト。現在表示位置のY座標を取得）
+  if (y > 0) { // 変数yの値が0よりも
+    headerElement.classList.add('header-fixed'); // 大きければhiddensセレクタを削除する
+  } else {
+    headerElement.classList.remove('header-fixed'); // そうでなければhiddensセレクタを追加する
+  }
+} ) ;
+
+// ハンバーガーメニュー
 (function () {
 
   //ハンバーガーボタンクリック時の関数
@@ -42,6 +56,8 @@
 
 })();
 
+
+// スライダー
 let mySwiper1 = new Swiper ('.slide1', {
   autoplay: {
     delay: 2000,
