@@ -269,10 +269,308 @@ select {
 
 // トップページ
 // 共通パーツ
-.header {
+@mixin mobile {
+  @media screen and (max-width : 768px) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media screen and (min-width: 769px) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+//CSS共通
+#wrapper {
+  font-size: 1.2rem;
+  font-weight: 900;
+  width: 100%;
+  text-align: center;
+}
+
+#contents {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(0);
+  transition: .4s transform;
+}
+
+
+#nav-btn {
+  display: none;
+  outline: none;
+}
+
+.menu {
+  z-index: 7;
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 70px;
+    li {
+      padding: 0 20px;
+      transition: all .5s;
+      a {
+        font-size: 16px;
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        &:after {
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+          content: '';
+          width: 100%;
+          height: 2px;
+          background: #333;
+          transform: scale(0, 1);
+          transform-origin: left top;
+          transition: transform .3s;
+        }
+        &:hover::after {
+          transform: scale(1, 1);
+        }
+      }
+    }
+  }
+}
+
+#menu-wrapper {
+  overflow: hidden;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+
+#menu-wrapper #hamburger-menu {
+  position: relative;
+  width: 25px;
+  height: 20px;
+  margin: 15px;
+}
+
+#menu-wrapper #hamburger-menu span {
+  opacity: 1;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 10px;
+  color: black;
+  background-color: white;
+  position: absolute;
+  transform: rotate(0deg);
+  transition: .4s ease-in-out;
+}
+
+#menu-wrapper #hamburger-menu span:nth-child(1) {
+  top: 0;
+}
+#menu-wrapper #hamburger-menu span:nth-child(2) {
+  top: 9px;
+}
+#menu-wrapper #hamburger-menu span:nth-child(3) {
+  top: 18px;
+}
+#menu-wrapper #hamburger-menu.open span:nth-child(1) {
+  transform: translateY(9px) rotate(135deg);
+}
+#menu-wrapper #hamburger-menu.open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+#menu-wrapper #hamburger-menu.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-135deg);
+}
+
+#menu-container .menu-list .menu-submenu {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#menu-container .menu-list {
+  padding-left: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  box-shadow: rgba(100,100,100,0.2) 6px 2px 10px;
+  z-index: 999;
+  overflow-y: auto;
+  overflow-x: hidden;
+  left: -100%;
+}
+
+#menu-container .menu-list li.accordion-toggle, #menu-container .menu-list .menu-login {
+  font-size: 16px;
+  padding: 20px;
+  text-transform: uppercase;
+  border-top: 1px solid #dbdcd2;
+}
+#menu-container .menu-list li:first-of-type {
+  border-top: 0;
+}
+
+.accordion-toggle, .accordion-content {
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  letter-spacing: 1px;
+}
+
+.accordion-content {
+  display: none;
+}
+
+.accordion-toggle a:before, .accordion-toggle a:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  width: 15px;
+  height: 2px;
+  margin-top: -1px;
+  background-color: #5a5858;
+  transform-origin: 50% 50%;
+  transition: all 0.3s ease-out;
+}
+
+.accordion-toggle a:before {
+  transform: rotate(-90deg);
+  opacity: 1;
+  z-index: 2;
+}
+
+.accordion-toggle.active-tab {
+background: yellowgreen;
+transition: all 0.3s ease;
+}
+.accordion-toggle a.active:before {
+  transform: rotate(0deg);
+  background: #fff !important;
+}
+
+.accordion-toggle a.active:after {
+  transform: rotate(180deg);
+  background: #fff !important;
+  opacity: 0;
+}
+
+
+
+@include sp() {
+  #nav-btn {
+    display: block;
+    position: fixed;
+    z-index: 11;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+  }
+
+  //ハンバーガーボタン
+  .hamburger {
     position: relative;
-    background: $MainColor;
+    display: block;
+    width: 22px;
+    height: 20px;
+    .bdr {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      border-radius: 4px;
+      background: #fff;
+      transition: all .5s;
+      &:nth-child(1) {
+        top: 4px;
+      }
+      &:nth-child(2) {
+        top: 16px;
+      }
+      &:nth-child(3) {
+        bottom: 8px;
+      }
+    }
+    &.is-active {
+      .bdr {
+        display: none;
+      }
+    }
+  }
+  .menu{
+    z-index: 7;
+    position: fixed;
+    top: 0;
+    right: 0;
+    text-align: left;
+    font-size: 13px;
+    z-index: 1;
+    transform: translateX(200px);
+    transition: .4s all;
+    ul {
+      display: block;
+      background: none;
+      color: #000;
+      text-align: center;
+      li {
+        transition: all .5s;
+        background: $MainColor;
+        padding: 20px;
+        &:hover {
+          opacity: 0.7;
+        }
+        a {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .nav-open {
+    .menu{
+    transform: translateX(0);
+    z-index: 7;
+    li{
+      padding: 20px;
+    }
+    }
+    #contents{
+      transform: translateX(-150px);
+    }
+  }
+}
+.header {
+    position: absolute;
+    top: 0;
+    z-index: 11111;
+    left: 0;
+    right: 50px;
     color: #fff;
+    @include sp(){
+      position: fixed;
+    }
     a {
         color: #fff;
     }
@@ -283,6 +581,13 @@ select {
         &__item:not(:last-of-type) {
             margin-right: 50px;
         }
+    }
+    &.header-fixed{
+      @include sp(){
+      background:  rgba(1,44,89,0.5);
+      width: 100%;
+      height: 42px;
+      }
     }
     .breadcrumb { 
         background: #000;
@@ -309,8 +614,7 @@ select {
         z-index: 5;
         width: 148px;
         height: 148px;
-        position: absolute;
-        top: 260px;
+        top: 430px;
         right: 43px;
         border-radius: 50%;
         background: $AccentColor;
@@ -318,6 +622,11 @@ select {
         align-items: center;
         justify-content: center;
         box-shadow: 2px 2px 12px #252525;
+        transition: .3s all;
+        &:hover{
+          background: #a04d00;
+          transition: .3s all;
+        }
         @include sp() {
             width: 70px;
             height: 70px;
@@ -418,10 +727,16 @@ select {
   &.white{
   color:#fff;
   border: 1px solid #fff;
+    &:hover{
+      opacity: 0.7;
+  }
   }
   &.blue{
     color:$MainColor;
     border: 1px solid $MainColor;
+    &:hover{
+      opacity: 0.7;
+    }
     }
   .viewmorebutton-arrow{
     display: flex;
@@ -433,15 +748,24 @@ select {
   margin: auto;
   padding: 20px;
   max-width: 400px;
+  width: 400px;
   font-size: $fz-m;
   font-weight: $fw-bold;
   background: $AccentColor;
   color:#fff;
   display: flex;
   justify-content: center;
+  transition: .3s all;
   .viewmorebutton-arrow{
     display: flex;
     margin-left: 10px;
+  }
+  &:hover{
+    background: #a04d00;
+    transition: .3s all;
+  }
+  @include sp(){
+    width: 330px;
   }
 }
 // バナーエリア
@@ -579,6 +903,9 @@ select {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    @include sp() {
+      padding: 0 50px;
+    }
   }
 
   &__item{
@@ -762,8 +1089,33 @@ select {
     position: absolute;
     left: 50%;
     top: 48%;
+    @include sp(){
+      top: 39%;
+      width: 20px;
+    }
+
+    
+  }
+  @include sp (){
+    bottom: 20px;
+    height: 48px;
+    right: 12px;
+    width: 48px;
   }
 }
+
+.aboutcardano-item{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  @include sp(){
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+  }
+}
+
 
 
 .topecosystems-catalist-image{
@@ -790,11 +1142,107 @@ main{
 
 
 // ーーーーファーストビューーーーー
-.fv{
-  padding: 50px;
-  background: $MainColor;
-  color: #FFF;
-  text-align: center;
+
+
+.swiper-container {
+  width: 100%;
+  margin: 0 auto;
+  
+  .swiper-wrapper {
+    
+      .swiper-slide {
+      
+          video {
+              width: 100%;
+              height: 100%;
+          }
+      }
+  }
+}
+
+.swiper-button-prev{
+  color: #fff;
+  position: absolute;
+  left: 110px;
+  &.picup{
+    color: $MainColor;
+    left: 280px;
+    @include sp(){
+      left: 20px;
+    }
+  }
+  @include sp(){
+    left: 20px;
+  }
+}
+
+.swiper-button-next{
+  color: #fff;
+  position: absolute;
+  right: 110px;
+  &.picup{
+    color: $MainColor;
+    right: 280px;
+    @include sp(){
+      right: 20px;
+    }
+  }
+  @include sp(){
+    right: 20px;
+  }
+}
+
+.bg-slide-image{
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  position: relative;
+  &.image1{
+    background-image: url(../img/main/fv-image.png);
+  }
+  &.image2{
+    background-image: url(../img/main/fv-image2.png);
+  }
+  &.image3{
+    background-image: url(../img/main/fv-image3.png);
+  }
+  &::before{
+    /* 透過した黒を上から重ねるイメージ */
+    background-color: rgba(0,0,0,0.4);
+    /* 自由に位置指定 */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: ' ';
+  }
+}
+
+.swiper-pagination-bullet-active{
+  background: #fff;
+}
+
+.fv {
+	background: #002C59;
+	color: #FFF;
+	padding: 50px;
+	text-align: center;
+}
+
+.fv-contents{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.fv-contents-text{
+  font-size: 56px;
+  margin-bottom: 40px;
+  @include sp(){
+    font-size: 24px;
+  }
 }
 
 
@@ -1217,7 +1665,6 @@ main{
 
 // ーーーープール基本情報ーーーー
 .poolinfo__box{
-  display: flex;
   padding: 10px;
   align-items: center;
   background: #fff;
@@ -1225,16 +1672,23 @@ main{
   border-image: url(../img/main/linear_frame.svg);
   border-image-repeat: stretch;
   border-image-slice: 1;
+  @include pc(){
+    display: flex;
+  }
   &:not(:last-of-type){
     margin-bottom: 30px;
   }
   .poolinfo__box-text{
-    margin-left: 20px;
     font-weight: $fw-bold;
+    @include pc(){
+      margin-left: 20px;
+    }
     li{
       padding: 10px;
       overflow-wrap: break-word;
-      max-width: 429px;
+      @include sp(){
+        max-width: 320px;
+      }
       &:not(:last-of-type){
         border-bottom: 1px solid #DFDFDF;
       }
@@ -1299,7 +1753,10 @@ main{
 
 // フッター
 .footer{
-  background: $MainColor;
+  background-image: url(../img/summary/summaryfaq_bg.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   padding-bottom: 100px;
   .poolinfo__box{
     background: #fff;
@@ -1311,11 +1768,16 @@ main{
   color:#fff;
 }
 .footer__texts-heading{
-  font-size: 20px;
+  font-style: italic;
+  font-size: 35px;
   margin: 50px 0 30px 0;
+  @include sp(){
+    font-size: 20px;
+  }
 }
 .footer__texts-despriction{
   font-weight: $fw-bold;
+  margin-top: 20px;
   margin-bottom: 30px;
 }
 
