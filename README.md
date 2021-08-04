@@ -4,6 +4,20 @@
 
 `$ gulp`
 
+**Node.jsのPATHを設定**
+
+    ```
+    $ echo 'export PATH=$PATH:/Users/asako_hs/.nodebrew/current/bin' >> ~/.bashrc
+    ```
+    .bashrcの更新を以下のコマンドで反映します。
+    ```
+    $ source ~/.bashrc
+    ```
+    以下のコマンドなどで、PATHが通っているかを確認します。
+    ```
+    $ node -v
+    ```
+    コマンドが無効な場合、.bash_profileにも同じ記述を記載します。.bashrcファイルがない場合は、ユーザーのホームディレクトリ直下に作成してください。
 
 
 ## コーディング手順
